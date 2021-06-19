@@ -9,6 +9,7 @@ import { Vehicle } from '../../shared/models/vehicle';
 import { VehicleService } from '../../shared/services/vehicle.service';
 
 import { masks } from '../../../../shared/utils/masks';
+import { IntertionalizationService } from 'src/app/core/internationalization/intertionalization.service';
 
 @Component({
     selector: 'app-add-vehicle',
@@ -26,8 +27,17 @@ export class AddVehicleComponent implements OnInit {
         private vehicleService: VehicleService,
         private formBuilder: FormBuilder,
         private bsModalRef: BsModalRef,
-        private toastrService: ToastrService
+        private toastrService: ToastrService,
+        private intertionalizationService: IntertionalizationService
     ) { }
+
+    get title(): string {
+        return this.intertionalizationService.translate('add-vehicle.title');
+    }
+
+    get platePlaceholder(): string {
+        return this.intertionalizationService.translate('add-vehicle.plate-placeholder');
+    }
 
     public ngOnInit(): void {
         this.form = this.formBuilder.group({

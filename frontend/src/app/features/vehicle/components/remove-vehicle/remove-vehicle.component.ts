@@ -8,6 +8,7 @@ import { Vehicle } from '../../shared/models/vehicle';
 import { VehicleService } from '../../shared/services/vehicle.service';
 
 import { masks } from '../../../../shared/utils/masks';
+import { IntertionalizationService } from 'src/app/core/internationalization/intertionalization.service';
 
 @Component({
     selector: 'app-remove-vehicle',
@@ -23,8 +24,13 @@ export class RemoveVehicleComponent implements OnInit {
     constructor(
         private vehicleService: VehicleService,
         private bsModalRef: BsModalRef,
-        private toastrService: ToastrService
+        private toastrService: ToastrService,
+        private intertionalizationService: IntertionalizationService
     ) { }
+
+    get title(): string {
+        return this.intertionalizationService.translate('remove-vehicle.title');
+    }
 
     public ngOnInit(): void {
         this.onClose = new Subject();

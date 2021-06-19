@@ -11,6 +11,7 @@ import { Vehicle } from './shared/models/vehicle';
 import { VehicleService } from './shared/services/vehicle.service';
 
 import { masks } from '../../shared/utils/masks';
+import { IntertionalizationService } from 'src/app/core/internationalization/intertionalization.service';
 
 @Component({
     selector: 'app-vehicle-list',
@@ -24,8 +25,25 @@ export class VehicleListComponent implements OnInit {
 
     constructor(
         private vehicleService: VehicleService,
-        private modalService: BsModalService
+        private modalService: BsModalService,
+        private intertionalizationService: IntertionalizationService
     ) { }
+
+    get title(): string {
+        return this.intertionalizationService.translate('vehicle-list.title');
+    }
+
+    get titleBold(): string {
+        return this.intertionalizationService.translate('vehicle-list.title-bold');
+    }
+
+    get add(): string {
+        return this.intertionalizationService.translate('vehicle-list.add');
+    }
+
+    get plate(): string {
+        return this.intertionalizationService.translate('vehicle-list.plate');
+    }
 
     public ngOnInit(): void {
         this.loadVehicles();

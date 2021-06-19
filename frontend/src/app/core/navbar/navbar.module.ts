@@ -3,9 +3,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { NavbarComponent } from './navbar.component';
+import { AvailableLanguagesComponent } from '../internationalization/available-languages/available-languages.component';
 
 @NgModule({
-    declarations: [NavbarComponent],
+    declarations: [NavbarComponent, AvailableLanguagesComponent],
     imports: [CommonModule, RouterModule],
     exports: [NavbarComponent],
 })
